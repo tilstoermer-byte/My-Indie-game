@@ -3,30 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Indie Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Indie Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Indie Game</h1>
-    </header>
-    <main>
-        <section id="screenshot-carousel">
-            <div class="carousel">
-                <img src="screenshots/screen1.jpg" alt="Screenshot 1">
-                <img src="screenshots/screen2.jpg" alt="Screenshot 2">
-                <img src="screenshots/screen3.jpg" alt="Screenshot 3">
-            </div>
-            <button id="prev">❮</button>
-            <button id="next">❯</button>
-        </section>
-        <section>
-            <a href="https://github.com/tilstoermer-byte/My-Indie-game/releases/latest" class="download-button">Download Latest Release</a>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 My Indie Game. All rights reserved.</p>
-    </footer>
-    <script src="carousel.js"></script>
+    <h1>Indie Game Screenshot Carousel</h1>
+    <div id="carousel" class="carousel">
+        <img src="https://raw.githubusercontent.com/tilstoermer-byte/My-Indie-game/main/Screenshot%202026-03-28%20164720.png" alt="Screenshot 1">
+        <img src="https://raw.githubusercontent.com/tilstoermer-byte/My-Indie-game/main/Screenshot%202026-03-28%20164808.png" alt="Screenshot 2">
+        <img src="https://raw.githubusercontent.com/tilstoermer-byte/My-Indie-game/main/Screenshot%202026-03-28%20164837.png" alt="Screenshot 3">
+    </div>
+    <button id="download-button">
+        <a href="https://github.com/tilstoermer-byte/My-Indie-game/releases/latest" style="text-decoration: none; color: white;">Download Latest Release</a>
+    </button>
+    <script src="script.js"></script>
 </body>
 </html>
