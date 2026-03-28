@@ -3,54 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Indie Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        p {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
-        .download-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .download-btn:hover {
-            background-color: #764ba2;
-        }
-    </style>
+    <title>My Indie Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎮 Download Indie Game</h1>
-        <p>Willkommen auf der Download-Seite unseres Indie-Spiels!</p>
-        <p>Klicke den Button unten, um zur GitHub Release-Seite zu gehen und das Spiel herunterzuladen:</p>
-        <a href="https://github.com/tilstoermer-byte/My-Indie-game/releases" class="download-btn">📥 Zum Download auf GitHub</a>
-    </div>
+    <header>
+        <h1>Welcome to My Indie Game</h1>
+    </header>
+    <main>
+        <section id="screenshot-carousel">
+            <div class="carousel">
+                <img src="screenshots/screen1.jpg" alt="Screenshot 1">
+                <img src="screenshots/screen2.jpg" alt="Screenshot 2">
+                <img src="screenshots/screen3.jpg" alt="Screenshot 3">
+            </div>
+            <button id="prev">❮</button>
+            <button id="next">❯</button>
+        </section>
+        <section>
+            <a href="https://github.com/tilstoermer-byte/My-Indie-game/releases/latest" class="download-button">Download Latest Release</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Indie Game. All rights reserved.</p>
+    </footer>
+    <script src="carousel.js"></script>
 </body>
 </html>
