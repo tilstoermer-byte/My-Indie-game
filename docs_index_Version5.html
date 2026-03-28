@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Indie Game - Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .carousel-section {
+            padding: 50px 30px;
+            background: #f8f9fa;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+        }
+
+        .carousel-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel img {
+            display: none;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            animation: fadeInScale 0.6s ease;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(102, 126, 234, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 15;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .carousel-nav:hover {
+            background: rgba(102, 126, 234, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: 15px;
+        }
+
+        .carousel-nav.next {
+            right: 15px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .dot.active {
+            background: white;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .content {
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 18px 55px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 45px;
+            padding-top: 40px;
+            border-top: 2px solid #eee;
+        }
+
+        .feature {
+            padding: 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: #f0f0f0;
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-text {
+            font-size: 1.05em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .content h2 {
+                font-size: 1.8em;
+            }
+
+            .download-btn {
+                padding: 14px 40px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🎮 Indie Game</h1>
+            <p>Erlebe ein spannendes Abenteuer voller Action!</p>
+        </div>
+
+        <div class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <img src="https://raw.githubusercontent.com/tilstoermer-byte/My-Indie-game/main/Screenshot%202026-03-28%20164720.png" alt="Screenshot 1" class="carousel-slide active">
+                        <img src="https://raw.githubusercontent.com/tilstoermer-byte/My-Indie-game/main/Screenshot%202026-03-28%20164808.png" alt="Screenshot 2" class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/tilstoermer-byte/My-Indie-game/main/Screenshot%202026-03-28%20164837.png" alt="Screenshot 3" class="carousel-slide">
+                    </div>
+                </div>
+                <button class="carousel-nav prev" onclick="changeSlide(-1)">❮</button>
+                <button class="carousel-nav next" onclick="changeSlide(1)">❯</button>
+                <div class="carousel-controls">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Bereit für ein Abenteuer?</h2>
+            <p>Tauche ein in eine Welt voller spannender Levels, atemberaubender Grafiken und unbegrenztem Spielspaß!</p>
+
+            <a href="https://github.com/tilstoermer-byte/My-Indie-game/releases/latest/download/IndieGame0.0.1.rar" class="download-btn">
+                📥 Jetzt herunterladen
+            </a>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-text">Pixel-Art</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">Schnelles Gameplay</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-text">Viele Level</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 My Indie Game</p>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentIndex = (currentIndex + direction + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            showSlide(currentIndex);
+        }
+
+        setInterval(() => changeSlide(1), 6000);
+    </script>
+</body>
+</html>
